@@ -360,6 +360,9 @@ resetBtn.addEventListener("click", () => {
 
   localStorage.removeItem("clickerGame");
   updateUI();
+  updateDoubleClickUI();
+  updateAutoClickUI();
+  updateBoosterUI();
 });
 
 function resetButtons() {
@@ -394,7 +397,5 @@ function resetButtons() {
   skin4Btn.classList.remove("active");
 }
 
-loadGame();
-updateUI();
 loadGame();
 updateUI();

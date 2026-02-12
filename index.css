@@ -295,34 +295,3 @@
     padding: 10px 20px;
   }
 }
-.skin button {
-  padding: 4px 8px;
-  font-size: 12px;
-}
-
-.upgrade {
-  font-size: 12px;
-  margin-bottom: 10px;
-}
-
-.skins {
-  gap: 8px;
-  margin-top: 15px;
-}
-
-.shop {
-  font-size: 12px;
-  padding: 8px;
-}
-
-.titleSkin,
-.titleUpg {
-  font-size: 18px;
-  margin-left: 0;
-  text-align: center;
-}
-
-#resetBtn {
-  font-size: 12px;
-  padding: 10px 20px;
-}
