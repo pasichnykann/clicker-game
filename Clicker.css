@@ -1,8 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&display=swap");
 
-/* =======================================
-   ЗАГАЛЬНІ СТИЛІ
-======================================= */
 * {
   margin: 0;
   padding: 0;
@@ -10,10 +7,8 @@
 }
 
 :root {
-  /* Шрифти */
   --font-main: "Playpen Sans", sans-serif;
 
-  /* Кольори */
   --color-bg-main: #fff8ac;
   --color-bg-gradient-start: #fff8acf2;
   --color-bg-gradient-end: #fff8acf2;
@@ -34,16 +29,17 @@
   gap: 40px;
   padding: 14px;
   min-height: 100vh;
-  background: linear-gradient( var(--color-bg-gradient-start),
-      var(--color-bg-gradient-end)), url(back1.png);
+  background:
+    linear-gradient(
+      var(--color-bg-gradient-start),
+      var(--color-bg-gradient-end)
+    ),
+    url(background/back1.png);
   background-color: var(--color-bg-main);
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-/* =======================================
-   КНОПКА КЛІКУ
-======================================= */
 #clickBtn {
   padding: 20px 40px;
   width: 300px;
@@ -52,12 +48,12 @@
   cursor: pointer;
   transition: all 0.07s ease-in-out;
   background: transparent;
-  background-image: url("лапка.png");
+  background-image: url("skin/лапка.png");
   background-size: cover;
-  -webkit-mask-image: url("лапка.png");
+  -webkit-mask-image: url("skin/лапка.png");
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-size: cover;
-  mask-image: url("лапка.png");
+  mask-image: url("skin/лапка.png");
   mask-repeat: no-repeat;
   mask-size: cover;
 }
@@ -66,11 +62,8 @@
   transform: translateY(6px);
 }
 
-/* =======================================
-   ГРА
-======================================= */
 .game {
-  font-family:  var(--font-main);
+  font-family: var(--font-main);
   font-size: 30px;
   display: flex;
   flex-direction: column;
@@ -100,12 +93,11 @@
   opacity: 1;
 }
 
-/* =======================================
-   МАГАЗИН
-======================================= */
 .shop {
-  background: linear-gradient(var(--color-shop-gradient-start),
-    var(--color-shop-gradient-end));
+  background: linear-gradient(
+    var(--color-shop-gradient-start),
+    var(--color-shop-gradient-end)
+  );
   font-family: var(--font-main);
   padding: 15px;
   border: 2px solid var(--color-border);
@@ -127,9 +119,6 @@
   margin-left: 80px;
 }
 
-/* =======================================
-   ПІДСИЛЮВАЧІ
-======================================= */
 .upgrade {
   padding: 5px 5px;
   font-size: 24px;
@@ -142,7 +131,7 @@
 .upgrade button {
   padding: 15px 35px;
   font-size: 20px;
-  font-family:  var(--font-main);
+  font-family: var(--font-main);
   border-radius: 20px;
   border-color: var(--color-accent);
   cursor: not-allowed;
@@ -157,9 +146,6 @@
   color: var(--color-text-light);
 }
 
-/* =======================================
-   СКІНИ
-======================================= */
 .skins {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -198,9 +184,6 @@
   color: var(--color-text-light);
 }
 
-/* =======================================
-   БУСТЕР ТАЙМЕР
-======================================= */
 #boosterTimer {
   position: fixed;
   top: 20px;
@@ -211,14 +194,11 @@
   font-family: var(--font-main);
   font-weight: bold;
   background: var(--color-accent);
-  color:  var(--color-text-light);
+  color: var(--color-text-light);
   border-radius: 10px;
   display: none;
 }
 
-/* =======================================
-   АДАПТИВНІ СТИЛІ
-======================================= */
 @media (max-width: 1024px) {
   #container {
     gap: 20px;
@@ -314,4 +294,35 @@
     font-size: 12px;
     padding: 10px 20px;
   }
+}
+.skin button {
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+.upgrade {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.skins {
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.shop {
+  font-size: 12px;
+  padding: 8px;
+}
+
+.titleSkin,
+.titleUpg {
+  font-size: 18px;
+  margin-left: 0;
+  text-align: center;
+}
+
+#resetBtn {
+  font-size: 12px;
+  padding: 10px 20px;
 }

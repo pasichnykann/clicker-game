@@ -1,6 +1,3 @@
-/* =======================================
-   ЗМІННІ ГРИ
-======================================= */
 let score = 0;
 let clickPower = 1;
 let baseClickPower = 1;
@@ -15,22 +12,19 @@ let autoClickBonus = 0;
 
 let boosterLevel = 0;
 let boosterPrice = 200;
-const boosterDuration = 10; // секунд
-const boosterPower = 10; // +10 кліків
+const boosterDuration = 10;
+const boosterPower = 10;
 
 let autoClickInterval = null;
 let boosterInterval = null;
 
-let currentSkin = "лапка.png";
+let currentSkin = "skin/лапка.png";
 
 let skin1Bought = false;
 let skin2Bought = false;
 let skin3Bought = false;
 let skin4Bought = false;
 
-/* =======================================
-   ЕЛЕМЕНТИ DOM
-======================================= */
 const scoreDisplay = document.getElementById("score");
 const clickBtn = document.getElementById("clickBtn");
 const resetBtn = document.getElementById("resetBtn");
@@ -51,19 +45,13 @@ const upgradeBuySound = document.getElementById("upgradeBuySound");
 upgradeBuySound.volume = 0.2;
 const skinBuySound = document.getElementById("skinBuySound");
 
-/* =======================================
-   ФУНКЦІЇ СКІНІВ
-======================================= */
 function applySkin(skin) {
   currentSkin = skin;
-
-  // Звук покупки
   if (skinBuySound) {
     skinBuySound.currentTime = 0;
     skinBuySound.play();
   }
 
-  // Застосування до кнопки
   clickBtn.style.backgroundImage = `url("${skin}")`;
   clickBtn.style.webkitMaskImage = `url("${skin}")`;
   clickBtn.style.maskImage = `url("${skin}")`;
@@ -90,21 +78,18 @@ function updateOneSkinButton(btn, bought, price, skin) {
 }
 
 function updateSkinButtons() {
-  updateOneSkinButton(skin1Btn, skin1Bought, 100, "skin1.png");
-  updateOneSkinButton(skin2Btn, skin2Bought, 300, "skin2.png");
-  updateOneSkinButton(skin3Btn, skin3Bought, 600, "skin3.png");
-  updateOneSkinButton(skin4Btn, skin4Bought, 1000, "skin4.png");
+  updateOneSkinButton(skin1Btn, skin1Bought, 100, "skin/skin1.png");
+  updateOneSkinButton(skin2Btn, skin2Bought, 300, "skin/skin2.png");
+  updateOneSkinButton(skin3Btn, skin3Bought, 600, "skin/skin3.png");
+  updateOneSkinButton(skin4Btn, skin4Bought, 1000, "skin/skin4.png");
 }
 
-/* =======================================
-   ПОДІЇ СКІНІВ
-======================================= */
 skin1Btn.addEventListener("click", () => {
   if (!skin1Bought && score >= 100) {
     score -= 100;
     skin1Bought = true;
   }
-  applySkin("skin1.png");
+  applySkin("skin/skin1.png");
 });
 
 skin2Btn.addEventListener("click", () => {
@@ -112,7 +97,7 @@ skin2Btn.addEventListener("click", () => {
     score -= 300;
     skin2Bought = true;
   }
-  applySkin("skin2.png");
+  applySkin("skin/skin2.png");
 });
 
 skin3Btn.addEventListener("click", () => {
@@ -120,7 +105,7 @@ skin3Btn.addEventListener("click", () => {
     score -= 600;
     skin3Bought = true;
   }
-  applySkin("skin3.png");
+  applySkin("skin/skin3.png");
 });
 
 skin4Btn.addEventListener("click", () => {
@@ -128,15 +113,11 @@ skin4Btn.addEventListener("click", () => {
     score -= 1000;
     skin4Bought = true;
   }
-  applySkin("skin4.png");
+  applySkin("skin/skin4.png");
 });
 
-/* =======================================
-   ОСНОВНИЙ КЛІК
-======================================= */
 clickBtn.addEventListener("click", () => {
   score += clickPower;
-
   if (clickSound) {
     clickSound.currentTime = 0;
     clickSound.play();
@@ -146,9 +127,6 @@ clickBtn.addEventListener("click", () => {
   saveGame();
 });
 
-/* =======================================
-   ПОДВІЙНИЙ КЛІК
-======================================= */
 doubleClickBtn.addEventListener("click", () => {
   if (score >= doubleClickPrice) {
     score -= doubleClickPrice;
@@ -175,9 +153,6 @@ function updateDoubleClickUI() {
   desc.textContent = `Кожен клік дає +${doubleClickBonus}`;
 }
 
-/* =======================================
-   АВТОКЛІК
-======================================= */
 autoClickBtn.addEventListener("click", () => {
   if (score < autoClickPrice) return;
 
@@ -210,9 +185,6 @@ function updateAutoClickUI() {
   desc.textContent = `+${2 + autoClickBonus} кліка кожну секунду`;
 }
 
-/* =======================================
-   БУСТЕР
-======================================= */
 boosterBtn.addEventListener("click", () => {
   if (score < boosterPrice) return;
 
@@ -255,13 +227,8 @@ function updateBoosterUI() {
   boosterBtn.disabled = score < boosterPrice;
 }
 
-/* =======================================
-   ОНОВЛЕННЯ UI
-======================================= */
 function updateUI() {
   scoreDisplay.textContent = score;
-
-  // Скін кнопки
   if (!skin1Bought) toggleButton(skin1Btn, 100);
   if (!skin2Bought) toggleButton(skin2Btn, 300);
   if (!skin3Bought) toggleButton(skin3Btn, 600);
@@ -284,9 +251,6 @@ function toggleButton(btn, price) {
   }
 }
 
-/* =======================================
-   ЗБЕРЕЖЕННЯ ГРИ
-======================================= */
 function saveGame() {
   const gameData = {
     score,
@@ -304,7 +268,7 @@ function saveGame() {
     skin2Bought,
     skin3Bought,
     skin4Bought,
-    currentSkin
+    currentSkin,
   };
 
   localStorage.setItem("clickerGame", JSON.stringify(gameData));
@@ -336,9 +300,8 @@ function loadGame() {
   skin3Bought = data.skin3Bought || false;
   skin4Bought = data.skin4Bought || false;
 
-  currentSkin = data.currentSkin || "лапка.png";
+  currentSkin = data.currentSkin || "skin/лапка.png";
 
-  // Відновлення скіну
   clickBtn.style.backgroundImage = `url("${currentSkin}")`;
   clickBtn.style.webkitMaskImage = `url("${currentSkin}")`;
   clickBtn.style.maskImage = `url("${currentSkin}")`;
@@ -360,17 +323,12 @@ function loadGame() {
   updateBoosterUI();
 }
 
-/* =======================================
-   СКИНУТИ ПРОГРЕС
-======================================= */
 resetBtn.addEventListener("click", () => {
   if (!confirm("Точно скинути весь прогрес?")) return;
 
-  // Зупиняємо інтервали
   if (autoClickInterval) clearInterval(autoClickInterval);
   if (boosterInterval) clearInterval(boosterInterval);
 
-  // Скидаємо змінні
   score = 0;
   clickPower = 1;
   baseClickPower = 1;
@@ -394,9 +352,8 @@ resetBtn.addEventListener("click", () => {
   skin3Bought = false;
   skin4Bought = false;
 
-  // Скидаємо UI
   resetButtons();
-  currentSkin = "лапка.png";
+  currentSkin = "skin/лапка.png";
   clickBtn.style.backgroundImage = `url("${currentSkin}")`;
   clickBtn.style.webkitMaskImage = `url("${currentSkin}")`;
   clickBtn.style.maskImage = `url("${currentSkin}")`;
@@ -405,9 +362,6 @@ resetBtn.addEventListener("click", () => {
   updateUI();
 });
 
-/* =======================================
-   ФУНКЦІЯ СКИНУТИ UI КНОПОК
-======================================= */
 function resetButtons() {
   doubleClickBtn.disabled = true;
   doubleClickBtn.classList.remove("active");
@@ -440,8 +394,7 @@ function resetButtons() {
   skin4Btn.classList.remove("active");
 }
 
-/* =======================================
-   ІНІЦІАЛІЗАЦІЯ
-======================================= */
+loadGame();
+updateUI();
 loadGame();
 updateUI();
