@@ -1,0 +1,317 @@
+@import url("https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&display=swap");
+
+/* =======================================
+   ЗАГАЛЬНІ СТИЛІ
+======================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Шрифти */
+  --font-main: "Playpen Sans", sans-serif;
+
+  /* Кольори */
+  --color-bg-main: #fff8ac;
+  --color-bg-gradient-start: #fff8acf2;
+  --color-bg-gradient-end: #fff8acf2;
+
+  --color-shop-gradient-start: #f6de7e;
+  --color-shop-gradient-end: #ffa722;
+
+  --color-accent: #ffa722;
+  --color-accent-light: rgb(254, 220, 146);
+  --color-border: #ebbd79;
+  --color-text-light: #ffffff;
+}
+
+#container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: start;
+  gap: 40px;
+  padding: 14px;
+  min-height: 100vh;
+  background: linear-gradient( var(--color-bg-gradient-start),
+      var(--color-bg-gradient-end)), url(back1.png);
+  background-color: var(--color-bg-main);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* =======================================
+   КНОПКА КЛІКУ
+======================================= */
+#clickBtn {
+  padding: 20px 40px;
+  width: 300px;
+  height: 300px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.07s ease-in-out;
+  background: transparent;
+  background-image: url("лапка.png");
+  background-size: cover;
+  -webkit-mask-image: url("лапка.png");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: cover;
+  mask-image: url("лапка.png");
+  mask-repeat: no-repeat;
+  mask-size: cover;
+}
+
+#clickBtn:active {
+  transform: translateY(6px);
+}
+
+/* =======================================
+   ГРА
+======================================= */
+.game {
+  font-family:  var(--font-main);
+  font-size: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+
+#resetBtn {
+  justify-content: center;
+  align-items: center;
+  margin-top: 70px;
+  padding: 20px 30px;
+  font-family: var(--font-main);
+  font-size: 24px;
+  background: var(--color-accent);
+  color: var(--color-text-light);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: 0.2s;
+}
+
+#resetBtn:hover {
+  opacity: 1;
+}
+
+/* =======================================
+   МАГАЗИН
+======================================= */
+.shop {
+  background: linear-gradient(var(--color-shop-gradient-start),
+    var(--color-shop-gradient-end));
+  font-family: var(--font-main);
+  padding: 15px;
+  border: 2px solid var(--color-border);
+  border-radius: 10px;
+  width: auto;
+  min-height: 95vh;
+}
+
+.titleUpg,
+.titleSkin {
+  font-size: 34px;
+}
+
+.titleUpg {
+  margin-left: 50px;
+}
+
+.titleSkin {
+  margin-left: 80px;
+}
+
+/* =======================================
+   ПІДСИЛЮВАЧІ
+======================================= */
+.upgrade {
+  padding: 5px 5px;
+  font-size: 24px;
+  margin-top: 15px;
+  border: 2px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-accent-light);
+}
+
+.upgrade button {
+  padding: 15px 35px;
+  font-size: 20px;
+  font-family:  var(--font-main);
+  border-radius: 20px;
+  border-color: var(--color-accent);
+  cursor: not-allowed;
+  opacity: 0.5;
+  transition: 0.2s;
+}
+
+.upgrade button.active {
+  cursor: pointer;
+  opacity: 1;
+  background: var(--color-accent);
+  color: var(--color-text-light);
+}
+
+/* =======================================
+   СКІНИ
+======================================= */
+.skins {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 80px;
+}
+
+.skin {
+  background: var(--color-accent-light);
+  border: 2px solid var(--color-border);
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+.skin img {
+  width: 100%;
+  max-width: 120px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.skin button {
+  padding: 8px 15px;
+  font-family: var(--font-main);
+  border-radius: 15px;
+  border-color: var(--color-accent);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.skin button.active {
+  cursor: pointer;
+  opacity: 1;
+  background: var(--color-accent);
+  color: var(--color-text-light);
+}
+
+/* =======================================
+   БУСТЕР ТАЙМЕР
+======================================= */
+#boosterTimer {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  font-size: 24px;
+  font-family: var(--font-main);
+  font-weight: bold;
+  background: var(--color-accent);
+  color:  var(--color-text-light);
+  border-radius: 10px;
+  display: none;
+}
+
+/* =======================================
+   АДАПТИВНІ СТИЛІ
+======================================= */
+@media (max-width: 1024px) {
+  #container {
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .shop {
+    padding: 10px;
+  }
+
+  #clickBtn {
+    width: 180px;
+    height: 180px;
+    padding: 20px 20px;
+  }
+
+  .game {
+    font-size: 24px;
+    gap: 20px;
+    margin-top: 200px;
+  }
+
+  .upgrade {
+    margin-bottom: 40px;
+  }
+
+  .upgrade button,
+  .skin button {
+    padding: 10px 20px;
+    font-size: 12px;
+  }
+
+  .skins {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-top: 20px;
+  }
+
+  .titleSkin,
+  .titleUpg {
+    font-size: 28px;
+    margin-left: 0;
+    text-align: center;
+  }
+}
+
+@media (max-width: 767px) {
+  #container {
+    gap: 10px;
+    padding: 10px;
+  }
+
+  #clickBtn {
+    width: 80px;
+    height: 80px;
+    padding: 5px 5px;
+  }
+
+  .game {
+    font-size: 12px;
+    gap: 10px;
+  }
+
+  .upgrade button,
+  .skin button {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+
+  .upgrade {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .skins {
+    gap: 8px;
+    margin-top: 15px;
+  }
+
+  .shop {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .titleSkin,
+  .titleUpg {
+    font-size: 18px;
+    margin-left: 0;
+    text-align: center;
+  }
+
+  #resetBtn {
+    font-size: 12px;
+    padding: 10px 20px;
+  }
+}

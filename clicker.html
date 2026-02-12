@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clicker</title>
+    <link rel="stylesheet" href="Clicker.css" />
+  </head>
+  <body>
+    <div id="container">
+      <div id="boosterTimer"></div>
+      <div class="shop">
+        <h2 class="titleSkin">ЛАПКА КОТИКА</h2>
+        <div class="skins">
+          <div class="skin">
+            <img src="skin1.png" alt="Skin 1" />
+            <button id="skin1Btn" disabled>100 кліків</button>
+          </div>
+          <div class="skin">
+            <img src="skin2.png" alt="Skin 2" />
+            <button id="skin2Btn" disabled>300 кліків</button>
+          </div>
+          <div class="skin">
+            <img src="skin3.png" alt="Skin 3" />
+            <button id="skin3Btn" disabled>600 кліків</button>
+          </div>
+          <div class="skin">
+            <img src="skin4.png" alt="Skin 4" />
+            <button id="skin4Btn" disabled>1000 кліків</button>
+          </div>
+        </div>
+      </div>
+      <div class="game">
+        <h1>Очки: <span id="score">0</span></h1>
+        <button id="clickBtn"></button>
+        <button id="resetBtn">Скинути прогрес</button>
+      </div>
+      <div class="shop">
+        <h2 class="titleUpg">ДОПОМОГА КОТИКА</h2>
+        <div class="upgrade">
+          <h3>Подвійний клік</h3>
+          <p>Кожен клік дає +2</p>
+          <button id="doubleClickBtn" disabled>50 кліків</button>
+        </div>
+        <div class="upgrade">
+          <h3>Автоклік</h3>
+          <p>+2 кліка кожну секунду</p>
+          <button id="autoClickBtn" disabled>100 кліків</button>
+        </div>
+        <div class="upgrade">
+          <h3>Бустер</h3>
+          <p>+10 кліків кожну секунду (10 сек)</p>
+          <button id="boosterBtn" disabled>200 кліків</button>
+        </div>
+      </div>
+    </div>
+    <audio id="upgradeBuySound" src="upgrade-buy.mp3" preload="auto"></audio>
+    <audio id="skinBuySound" src="skin-buy.mp3" preload="auto"></audio>
+    <audio id="clickSound" src="click.mp3" preload="auto"></audio>
+    <script src="Clicker.js"></script>
+  </body>
+</html>
