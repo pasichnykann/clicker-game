@@ -22,12 +22,10 @@
   --color-text-light: #ffffff;
 }
 
-#container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  align-items: start;
-  gap: 40px;
-  padding: 14px;
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-height: 100vh;
   background:
     linear-gradient(
@@ -38,6 +36,15 @@
   background-color: var(--color-bg-main);
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+#container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: start;
+  gap: 40px;
+  padding: 14px;
+  max-width: 1400px;
 }
 
 #clickBtn {
